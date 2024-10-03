@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:appwrite_tracker/appwrite/appwrite.dart';
+import 'package:appwrite_tracker/features/login_screen/src/login_screen.dart';
 import 'package:appwrite_tracker/features/signup_screen/signup_screen.dart';
 import 'package:appwrite_tracker/home_page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,18 @@ final routerProvider = Provider<GoRouter>((ref) {
             debugPrint('$name - $email - $password');
             final appWrite = GetIt.instance.get<Appwrite>();
             final user = await appWrite.createAccount(name, email, password);
-            debugPrint(jsonEncode(user ?? '{}'));
+            debugPrint(jsonEncode(user?.toMap() ?? '{}'));
+          });
+        }),
+    GoRoute(
+        name: LoginScreen.name,
+        path: "/login",
+        builder: (_, __) {
+          return LoginScreen(onLogin: (email, password) async {
+            debugPrint('$email - $password');
+            final appWrite = GetIt.instance.get<Appwrite>();
+            final session = await appWrite.createEmailSession(email, password);
+            debugPrint(jsonEncode(session?.toMap() ?? '{}'));
           });
         }),
   ]);
