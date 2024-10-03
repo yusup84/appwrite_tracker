@@ -1,11 +1,14 @@
-import 'package:appwrite_tracker/appwrite/appwrite.dart';
 import 'package:appwrite_tracker/dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   initDependencies();
-  runApp(const MainApp());
+  runApp(
+    const ProviderScope(
+      child: MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -14,7 +17,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final appwrite = GetIt.instance.get<Appwrite>();
-    
+
     return const MaterialApp(
       home: Scaffold(
         body: Center(
