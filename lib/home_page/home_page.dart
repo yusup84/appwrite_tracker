@@ -1,4 +1,6 @@
+import 'package:appwrite_tracker/features/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   static const String name = "home";
@@ -10,8 +12,24 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: const Center(
-        child: Text("Welcome to appwrite tracker"),
+      body: Center(
+        child: Column(
+          children: [
+            const Text("Welcome to appwrite tracker"),
+            const SizedBox(
+              height: 20.0,
+            ),
+            ElevatedButton(onPressed: () {}, child: const Text("Login")),
+            const SizedBox(
+              height: 10.0,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  context.goNamed(SignupScreen.name);
+                },
+                child: const Text("Create account")),
+          ],
+        ),
       ),
     );
   }
