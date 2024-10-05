@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Text("Welcome to appwrite tracker"),
             const SizedBox(
