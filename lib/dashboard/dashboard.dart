@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Dashboard extends StatelessWidget {
+  static const String name = 'dashboard';
   const Dashboard({super.key});
 
   @override
@@ -24,7 +25,7 @@ class Dashboard extends StatelessWidget {
               Consumer(builder: (context, ref, widget) {
                 final authNotifier = ref.watch(authProvider.notifier);
                 return ElevatedButton(
-                    onPressed: () async{
+                    onPressed: () async {
                       await authNotifier.logout();
                     },
                     child: const Text("Logout"));
